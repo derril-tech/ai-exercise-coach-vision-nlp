@@ -1,0 +1,388 @@
+/* Accessibility Styles for AI Exercise Coach */
+
+/* Skip Links */
+.skip-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  font-weight: bold;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --background: 0 0% 0%;
+  --foreground: 0 0% 100%;
+  --card: 0 0% 10%;
+  --card-foreground: 0 0% 100%;
+  --popover: 0 0% 10%;
+  --popover-foreground: 0 0% 100%;
+  --primary: 0 0% 100%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 20%;
+  --secondary-foreground: 0 0% 100%;
+  --muted: 0 0% 20%;
+  --muted-foreground: 0 0% 80%;
+  --accent: 0 0% 20%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 30%;
+  --input: 0 0% 20%;
+  --ring: 0 0% 100%;
+}
+
+.high-contrast * {
+  border-color: hsl(var(--border)) !important;
+}
+
+.high-contrast button,
+.high-contrast input,
+.high-contrast select,
+.high-contrast textarea {
+  border: 2px solid hsl(var(--border)) !important;
+}
+
+.high-contrast button:hover,
+.high-contrast button:focus {
+  background-color: hsl(var(--accent)) !important;
+  border-color: hsl(var(--ring)) !important;
+}
+
+/* Large Text Mode */
+.large-text {
+  font-size: 1.125rem; /* 18px base instead of 16px */
+}
+
+.large-text h1 { font-size: 2.5rem; }
+.large-text h2 { font-size: 2rem; }
+.large-text h3 { font-size: 1.75rem; }
+.large-text h4 { font-size: 1.5rem; }
+.large-text h5 { font-size: 1.25rem; }
+.large-text h6 { font-size: 1.125rem; }
+
+.large-text .text-xs { font-size: 0.875rem; }
+.large-text .text-sm { font-size: 1rem; }
+.large-text .text-base { font-size: 1.125rem; }
+.large-text .text-lg { font-size: 1.25rem; }
+.large-text .text-xl { font-size: 1.5rem; }
+
+/* Font Size Classes */
+.font-small { font-size: 14px; }
+.font-medium { font-size: 16px; }
+.font-large { font-size: 18px; }
+.font-xl { font-size: 20px; }
+
+/* Reduced Motion */
+.reduced-motion *,
+.reduced-motion *::before,
+.reduced-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.reduced-motion .animate-spin {
+  animation: none;
+}
+
+.reduced-motion .animate-pulse {
+  animation: none;
+}
+
+.reduced-motion .animate-bounce {
+  animation: none;
+}
+
+/* Enhanced Focus Indicators */
+.focus-indicators *:focus {
+  outline: 3px solid hsl(var(--ring));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.focus-indicators button:focus,
+.focus-indicators input:focus,
+.focus-indicators select:focus,
+.focus-indicators textarea:focus,
+.focus-indicators [tabindex]:focus {
+  box-shadow: 0 0 0 3px hsl(var(--ring));
+}
+
+.focus-indicators .focus-visible {
+  outline: 3px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Keyboard Navigation Helpers */
+[data-keyboard-navigation="true"] {
+  outline: 2px solid transparent;
+  transition: outline-color 0.15s ease-in-out;
+}
+
+[data-keyboard-navigation="true"]:focus {
+  outline-color: hsl(var(--ring));
+}
+
+/* Button and Interactive Element Enhancements */
+.accessibility-enhanced button,
+.accessibility-enhanced [role="button"] {
+  min-height: 44px; /* WCAG AA minimum touch target */
+  min-width: 44px;
+  padding: 0.5rem 1rem;
+}
+
+.accessibility-enhanced input,
+.accessibility-enhanced select,
+.accessibility-enhanced textarea {
+  min-height: 44px;
+  padding: 0.75rem;
+}
+
+/* High Contrast Button States */
+.high-contrast button:disabled {
+  background-color: hsl(var(--muted)) !important;
+  color: hsl(var(--muted-foreground)) !important;
+  border-color: hsl(var(--muted)) !important;
+  opacity: 1 !important;
+}
+
+.high-contrast button[aria-pressed="true"] {
+  background-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+/* Caption Styles */
+.captions {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.4;
+  max-width: 80%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.high-contrast .captions {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  border: 2px solid hsl(var(--border));
+}
+
+/* Loading States for Screen Readers */
+.loading-announcement {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Error and Success Messages */
+.error-message {
+  color: hsl(var(--destructive));
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.success-message {
+  color: hsl(var(--primary));
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.high-contrast .error-message {
+  color: #ff6b6b;
+  background: hsl(var(--background));
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.high-contrast .success-message {
+  color: #51cf66;
+  background: hsl(var(--background));
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+/* Workout-Specific Accessibility */
+.workout-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: hsl(var(--card));
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.workout-controls button {
+  min-width: 120px;
+  font-weight: 600;
+}
+
+.rep-counter {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem;
+  background: hsl(var(--muted));
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+
+.high-contrast .rep-counter {
+  border: 2px solid hsl(var(--border));
+}
+
+/* Form Score Indicators */
+.form-score {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+
+.form-score.excellent {
+  background: #d4edda;
+  color: #155724;
+}
+
+.form-score.good {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.form-score.needs-work {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.high-contrast .form-score {
+  border: 2px solid currentColor;
+  font-weight: bold;
+}
+
+/* Progress Indicators */
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: hsl(var(--muted));
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: hsl(var(--primary));
+  transition: width 0.3s ease;
+}
+
+.reduced-motion .progress-bar-fill {
+  transition: none;
+}
+
+.high-contrast .progress-bar {
+  border: 2px solid hsl(var(--border));
+}
+
+/* Responsive Accessibility */
+@media (max-width: 768px) {
+  .accessibility-enhanced button,
+  .accessibility-enhanced [role="button"] {
+    min-height: 48px; /* Larger touch targets on mobile */
+    min-width: 48px;
+  }
+  
+  .workout-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .workout-controls button {
+    width: 100%;
+  }
+}
+
+/* Print Styles for Accessibility */
+@media print {
+  .skip-links,
+  .captions,
+  .loading-announcement {
+    display: none;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+  }
+  
+  button,
+  input,
+  select,
+  textarea {
+    border: 1px solid black !important;
+  }
+}
+
+/* Prefers Color Scheme Support */
+@media (prefers-color-scheme: dark) {
+  :root:not(.high-contrast) {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --border: 0 0% 50%;
+  }
+}
